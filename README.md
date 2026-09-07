@@ -116,7 +116,7 @@ git remote get-url origin
 git branch --show-current
 source_sha=$(git rev-parse HEAD)
 git cat-file -e "$source_sha^{commit}"
-git show "$source_sha:specification.md"
+git show "${source_sha}:specification.md"
 ```
 
 Дерево должно быть чистым, а `show` — выводить принятую спецификацию. В корне отдельного checkout сервиса откройте [общий практикум разработчика](https://github.com/apolenkov/sdd-guide-credit-calculator-stage-3/blob/main/docs/developer-handoff.md) и выполните только начальную read-only проверку:
