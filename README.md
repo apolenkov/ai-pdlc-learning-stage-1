@@ -10,7 +10,7 @@
 
 ```bash
 git clone https://github.com/apolenkov/sdd-guide-credit-calculator-stage-1.git
-cd sdd-credit-calculator-stage-1-example
+cd sdd-guide-credit-calculator-stage-1
 ```
 
 В общем эталоне организатор выдаёт доступ на чтение и отправку личных учебных веток. Не отправляйте решение в `main`, не обходите её защиту и не сливайте учебные PR. Если вы проходите курс в собственном репозитории, допустимую базу и merge определяют его правила; команды курса всё равно используют последовательные личные ветки.
@@ -63,7 +63,7 @@ cd sdd-credit-calculator-stage-1-example
 
 ## Переход в R2 в этой же папке
 
-Откройте [полную инструкцию R2](https://apolenkov.github.io/customdev-learning/guides/stage-2.html). Её основной режим продолжает текущий checkout: не выполняйте команды отдельного старта из репозитория `sdd-credit-calculator-stage-2-example`.
+Откройте [полную инструкцию R2](https://apolenkov.github.io/customdev-learning/guides/stage-2.html). Её основной режим продолжает текущий checkout: не выполняйте команды отдельного старта из репозитория `sdd-guide-credit-calculator-stage-2`.
 
 Короткий контракт перехода:
 
