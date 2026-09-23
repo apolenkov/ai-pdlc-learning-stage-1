@@ -79,7 +79,7 @@ R3 создаётся веткой `course/your_login/stage-3-reset-years` от 
 - [2-ИИ — необязательная предпроверка](https://apolenkov.github.io/customdev-learning/guides/stage-2-ai.html)
 - [R3 — ручной переход в OpenSpec](https://apolenkov.github.io/customdev-learning/guides/stage-3.html)
 - [3-ИИ — отдельный `add-payment-summary`](https://apolenkov.github.io/customdev-learning/guides/stage-3-ai.html)
-- [R4 — изолированный продуктовый Store](https://apolenkov.github.io/customdev-learning/guides/stage-3-star.html)
+- [R4 — изолированный продуктовый Store](https://apolenkov.github.io/customdev-learning/guides/stage-4.html)
 
 Каталог курса: <https://apolenkov.github.io/customdev-learning/guides/>.
 
