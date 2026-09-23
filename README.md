@@ -65,19 +65,11 @@ https://github.example.invalid/your_login/sdd-guide-credit-calculator-stage-1.gi
 
 После принятой R2 продолжайте в том же checkout по [полной инструкции R3](https://apolenkov.github.io/customdev-learning/guides/stage-3.html). Не клонируйте сервисный пример и не добавляйте приложение ради этой ступени.
 
-R3 создаётся веткой `course/your_login/stage-3-reset-years` от принятой R2. До инициализации обновите `AGENTS.md` под правила R3. Затем выполните native OpenSpec-команды вручную из этого же корня:
-
-```bash
-openspec --version
-openspec init --tools opencode --language ru .
-openspec new change add-reset-and-years-term --description "Накопительное ТЗ: сброс формы и срок в месяцах или годах"
-openspec status --change add-reset-and-years-term --json
-openspec instructions proposal --change add-reset-and-years-term --json
-```
+R3 создаётся веткой `course/your_login/stage-3-reset-years` от принятой R2. До инициализации обновите `AGENTS.md` под правила R3. Точную разовую инициализацию OpenSpec под Kilo выполняйте в этом же checkout по полной инструкции R3: она вызывает `openspec init --tools kilocode`, после которого Kilo сам находит сгенерированные `.kilocode/skills`; последовательность команд здесь не дублируется.
 
 Далее запрашивайте `status` и `instructions` для следующего документа планирования и заполняйте его сами. Переносите все восемь сценариев R2 поэтапно. Удаляйте рабочую `specification.md` только после таблицы соответствия и строгой проверки полного Change; в таблице запишите репозиторий, принятый PR R2 и личную ветку — точный коммит при необходимости выводится из проверенного PR, а полный SHA остаётся необязательной продвинутой фиксацией. В этом учебном репозитории нет доказанного рабочего состояния: новые функции остаются в активном Change с незавершёнными задачами. Apply запрещён. Если CLI недоступна, init завершился ошибкой или root оказался другим, остановитесь и следуйте разделу устранения ошибки полной инструкции; не создавайте структуру наугад.
 
-Необязательная [3-ИИ](https://apolenkov.github.io/customdev-learning/guides/stage-3-ai.html) — другое упражнение. В ветке `course/your_login/stage-3-ai-payment-summary` поверх личной R3 она создаёт или продолжает новый `add-payment-summary` через сообщение в OpenCode, а не повторяет ручной Change. Для неё открывается отдельный PR с base `course/your_login/stage-3-reset-years`; Apply не запускается. После R3 и 3-ИИ код по-прежнему не реализован.
+Необязательная [3-ИИ](https://apolenkov.github.io/customdev-learning/guides/stage-3-ai.html) — другое упражнение. В ветке `course/your_login/stage-3-ai-payment-summary` поверх личной R3 она создаёт или продолжает новый `add-payment-summary` через сообщение в Kilo в VS Code (продвинутая альтернатива — OpenCode), а не повторяет ручной Change. Для неё открывается отдельный PR с base `course/your_login/stage-3-reset-years`; Apply не запускается. После R3 и 3-ИИ код по-прежнему не реализован.
 
 ## Карта семи стабильных страниц
 
