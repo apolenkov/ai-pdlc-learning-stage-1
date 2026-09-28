@@ -6,15 +6,15 @@
 
 ## Где работать и какие права нужны
 
-Откройте [общий учебный эталон](https://github.com/apolenkov/sdd-guide-credit-calculator-stage-1), нажмите **Fork** и выберите своё личное пространство. Скопируйте HTTPS-адрес вашего fork — здесь и во всех примерах ниже `your_login` заменяйте своим GitHub-логином:
+Откройте [общий учебный эталон](https://github.com/apolenkov/sdd-guide-credit-calculator-stage-1), нажмите **Fork** и выберите своё личное пространство. Скопируйте HTTPS-адрес вашего fork — здесь и во всех примерах ниже `your_login` заменяйте своим логином GitLab:
 
 ```text
-https://github.example.invalid/your_login/sdd-guide-credit-calculator-stage-1.git
+https://gitlab.example.invalid/your_login/sdd-guide-credit-calculator-stage-1.git
 ```
 
 В VS Code выполните **Git: Clone** через палитру команд или кнопку **Clone Repository**, вставьте адрес fork, выберите родительскую папку и откройте клонированный корень `sdd-guide-credit-calculator-stage-1`. Эта папка останется рабочей на R1–R3.
 
-После клонирования `origin` уже указывает на ваш fork, поэтому второй remote добавлять не нужно. Не отправляйте решение в `main` и не обходите её защиту. После двух review учебный PR можно смёржить в личную base-ветку внутри своего fork; в общую `main` не сливайте.
+После клонирования `origin` уже указывает на ваш fork, поэтому второй remote добавлять не нужно. Не отправляйте решение в `main` и не обходите её защиту. После двух review учебный MR можно смёржить в личную base-ветку внутри своего fork; в общую `main` не сливайте.
 
 Для повторного прохождения добавьте ко всем веткам одинаковый суффикс, например `-2`.
 
@@ -40,7 +40,7 @@ https://github.example.invalid/your_login/sdd-guide-credit-calculator-stage-1.gi
 
    После коммита список **Changes** снова пуст. Чтение diff не доказывает работу приложения или человеческое одобрение. Полный SHA коммита можно посмотреть командой `git rev-parse HEAD`, но для R1 это необязательная продвинутая фиксация, а не условие приёмки.
 
-4. Опубликуйте личную ветку в свой fork: в **Source Control** нажмите **Publish Branch** — VS Code отправит `course/your_login/stage-1-error-result` в `origin` и начнёт отслеживать её. Ветка должна появиться в вашем fork на GitHub.
+4. Опубликуйте личную ветку в свой fork: в **Source Control** нажмите **Publish Branch** — VS Code отправит `course/your_login/stage-1-error-result` в `origin` и начнёт отслеживать её. Ветка должна появиться в вашем fork в GitLab.
 
    Личная учебная задача в Jira — обязательный шаг R1: откройте выданную вам Task проекта DEMO или создайте её на себя по шагу «Создайте свою личную задачу в Jira» [канонической инструкции ступени 1](https://apolenkov.github.io/customdev-learning/guides/stage-1.html); порядок доступа к Jira и родитель описаны там и в [корпоративных ресурсах курса](https://apolenkov.github.io/customdev-learning/corporate-resources.html#jira) и здесь не повторяются. Добавьте в задачу ссылку на ветку и краткое решение; полный SHA можно приложить как точную фиксацию, но он необязателен. Не придумывайте ключ, родителя или факт согласования.
 
@@ -55,7 +55,7 @@ https://github.example.invalid/your_login/sdd-guide-credit-calculator-stage-1.gi
 1. Убедитесь, что в VS Code открыт тот же репозиторий с принятой R1: текущая ветка — `course/your_login/stage-1-error-result`, а панель **Source Control** не показывает незакоммиченных правок.
 2. От этой ветки создайте `course/your_login/stage-2-reset` — имя ветки в строке состояния → **Create new branch**.
 3. В `specification.md` сохраните пять сценариев R1 и добавьте правило сброса плюс три сценария: после успешного расчёта, после ошибки и повторный сброс. Повторный сброс не меняет состояние, не запускает расчёт и не показывает ошибок.
-4. Прочитайте diff в **Source Control**, сделайте коммит, опубликуйте ветку и откройте PR с base `course/your_login/stage-1-error-result` и head `course/your_login/stage-2-reset`.
+4. Прочитайте diff в **Source Control**, сделайте коммит, опубликуйте ветку и откройте MR со source `course/your_login/stage-2-reset` и target `course/your_login/stage-1-error-result`.
 5. Сначала другой аналитик, затем разработчик или архитектор проверяют актуальный diff. После содержательной правки нужны повторные подтверждения обоих людей.
 6. Только после основного цикла можно пройти необязательную [2-ИИ](https://apolenkov.github.io/customdev-learning/guides/stage-2-ai.html). Принятые правки сохраняются в той же R2-ветке и снова предъявляются обоим людям, если изменили проверенный diff.
 
@@ -67,15 +67,15 @@ https://github.example.invalid/your_login/sdd-guide-credit-calculator-stage-1.gi
 
 R3 создаётся веткой `course/your_login/stage-3-reset-years` от принятой R2. До инициализации обновите `AGENTS.md` под правила R3. Точную разовую инициализацию OpenSpec под Kilo выполняйте в этом же checkout по полной инструкции R3: она вызывает `openspec init --tools none`; последовательность команд здесь не дублируется. Три навыка планирования `.kilo/skills` — `openspec-explore`, `openspec-propose` и `openspec-update-change` — уже лежат в репозитории и переходят с принятыми ветками R1–R3: Kilo в VS Code находит их сам, генерировать или копировать их не нужно.
 
-Далее запрашивайте `status` и `instructions` для следующего документа планирования и заполняйте его сами. Переносите все восемь сценариев R2 поэтапно. Удаляйте рабочую `specification.md` только после таблицы соответствия и строгой проверки полного Change; в таблице запишите репозиторий, принятый PR R2 и личную ветку — точный коммит при необходимости выводится из проверенного PR, а полный SHA остаётся необязательной продвинутой фиксацией. В этом учебном репозитории нет доказанного рабочего состояния: новые функции остаются в активном Change с незавершёнными задачами. Apply запрещён. Если CLI недоступна, init завершился ошибкой или root оказался другим, остановитесь и следуйте разделу устранения ошибки полной инструкции; не создавайте структуру наугад.
+Далее запрашивайте `status` и `instructions` для следующего документа планирования и заполняйте его сами. Переносите все восемь сценариев R2 поэтапно. Удаляйте рабочую `specification.md` только после таблицы соответствия и строгой проверки полного Change; в таблице запишите репозиторий, принятый MR R2 и личную ветку — точный коммит при необходимости выводится из проверенного MR, а полный SHA остаётся необязательной продвинутой фиксацией. В этом учебном репозитории нет доказанного рабочего состояния: новые функции остаются в активном Change с незавершёнными задачами. Apply запрещён. Если CLI недоступна, init завершился ошибкой или root оказался другим, остановитесь и следуйте разделу устранения ошибки полной инструкции; не создавайте структуру наугад.
 
-Необязательная [3-ИИ](https://apolenkov.github.io/customdev-learning/guides/stage-3-ai.html) — другое упражнение. В ветке `course/your_login/stage-3-ai-payment-summary` поверх личной R3 она создаёт или продолжает новый `add-payment-summary` через сообщение в Kilo в VS Code (продвинутая альтернатива — OpenCode), а не повторяет ручной Change. Для неё открывается отдельный PR с base `course/your_login/stage-3-reset-years`; Apply не запускается. После R3 и 3-ИИ код по-прежнему не реализован.
+Необязательная [3-ИИ](https://apolenkov.github.io/customdev-learning/guides/stage-3-ai.html) — другое упражнение. В ветке `course/your_login/stage-3-ai-payment-summary` поверх личной R3 она создаёт или продолжает новый `add-payment-summary` через сообщение в Kilo в VS Code (продвинутая альтернатива — OpenCode), а не повторяет ручной Change. Для неё открывается отдельный MR с target `course/your_login/stage-3-reset-years`; Apply не запускается. После R3 и 3-ИИ код по-прежнему не реализован.
 
 ## Карта семи стабильных страниц
 
 - [R1 — спецификация в Git](https://apolenkov.github.io/customdev-learning/guides/stage-1.html)
 - [1-ИИ — помощь с R1](https://apolenkov.github.io/customdev-learning/guides/stage-1-ai.html)
-- [R2 — сброс, PR и два review](https://apolenkov.github.io/customdev-learning/guides/stage-2.html)
+- [R2 — сброс, MR и два review](https://apolenkov.github.io/customdev-learning/guides/stage-2.html)
 - [2-ИИ — необязательная предпроверка](https://apolenkov.github.io/customdev-learning/guides/stage-2-ai.html)
 - [R3 — ручной переход в OpenSpec](https://apolenkov.github.io/customdev-learning/guides/stage-3.html)
 - [3-ИИ — отдельный `add-payment-summary`](https://apolenkov.github.io/customdev-learning/guides/stage-3-ai.html)
