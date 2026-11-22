@@ -13,7 +13,16 @@
 
 ## Разобранный пример
 
-Ветки `course/example/stage-1-error-result` → `course/example/stage-2-reset` → `course/example/stage-3-reset-years` → `course/example/stage-3-ai-payment-summary` показывают одно прохождение шагов 1–3 в этом же репозитории. Сверяйте с ними свою работу после того, как сделали шаг сами.
+Ветки `course/example/*` показывают одно прохождение шагов 1–3 в этом же репозитории. Сверяйте с ними свою работу после того, как сделали шаг самостоятельно, и смотрите только то, что в ветке есть:
+
+| Ветка | Что сверять | Чего в ветке нет |
+| --- | --- | --- |
+| `course/example/stage-1-error-result` | `specification.md`: правило очистки результата при ошибке, пятый сценарий, снятый открытый вопрос | `intents/clear-calculation-result.md` |
+| `course/example/stage-2-reset` | `specification.md`: правило сброса и три сценария сброса поверх пяти сценариев шага 1 | `intents/clear-calculation-result.md` |
+| `course/example/stage-3-reset-years` | change `add-reset-and-years-term` в `openspec/changes/` | `specification.md` и `intents/` |
+| `course/example/stage-3-ai-payment-summary` | дополнительный change `add-payment-summary` (итоги выплат и переплата) рядом с предыдущим | `specification.md` и `intents/` |
+
+Intent в этих ветках не хранится. Свой `intents/clear-calculation-result.md` сверяйте с [примером intent в main](https://github.com/apolenkov/sdd-guide-credit-calculator-stage-1/blob/main/examples/clear-calculation-result.md): ветки примера проверяют `specification.md` и OpenSpec, но не intent.
 
 ## Сначала сформулируйте запрос
 
@@ -31,7 +40,14 @@
 https://github.com/your_login/sdd-guide-credit-calculator-stage-1.git
 ```
 
-В VS Code выполните **Git: Clone** через палитру команд или кнопку **Clone Repository**, вставьте адрес fork, выберите родительскую папку и откройте клонированный корень `sdd-guide-credit-calculator-stage-1`. Эта папка останется рабочей на шагах 1–3.
+В VS Code выполните **Git: Clone** через палитру команд или кнопку **Clone Repository**, вставьте адрес fork, выберите родительскую папку и откройте клонированный корень `sdd-guide-credit-calculator-stage-1`. В терминале из родительской папки то же делают две команды (в GitLab подставьте адрес своего проекта):
+
+```sh
+git clone https://github.com/your_login/sdd-guide-credit-calculator-stage-1.git
+cd sdd-guide-credit-calculator-stage-1
+```
+
+Эта папка останется рабочей на шагах 1–3.
 
 После клонирования `origin` уже указывает на ваш fork, поэтому второй remote добавлять не нужно. Не отправляйте решение в `main` и не обходите её защиту. На шагах 2–4 курс требует одобрения по текущему diff. Его даёт владелец продукта: он нажимает Approve. Аналитик и техлид оставляют замечания в MR/PR. Архитектора приглашают через @, если изменение затрагивает данные, интеграции, безопасность или производительность, либо при споре; он пишет замечания (и `design.md`), но одобряет по-прежнему владелец продукта. Автор не одобряет свой запрос. ИИ и автоматическая проверка одобрение не заменяют.
 
@@ -39,7 +55,7 @@ https://github.com/your_login/sdd-guide-credit-calculator-stage-1.git
 
 ## Задание шага 1
 
-1. Проверьте папку и создайте личную ветку в VS Code: щёлкните имя текущей ветки в левом конце строки состояния, выберите **Create new branch** и введите `course/your_login/stage-1-error-result`.
+1. Проверьте папку и создайте личную ветку. В VS Code: щёлкните имя текущей ветки в левом конце строки состояния, выберите **Create new branch** и введите `course/your_login/stage-1-error-result`. В терминале: `git switch -c course/your_login/stage-1-error-result`, затем `git status --short --branch` — ожидается только строка `## course/your_login/stage-1-error-result`.
 
    Если панель **Source Control** показывает чужие или неожиданные правки, остановитесь и уточните папку у организатора. Ничего не сбрасывайте.
 
@@ -51,15 +67,15 @@ https://github.com/your_login/sdd-guide-credit-calculator-stage-1.git
 
    Это заданное решение упражнения, а не правило, которое нужно угадать. Четыре исходных сценария должны сохраниться: после правки в документе должно быть ровно пять сценариев.
 
-3. Проверьте и сохраните замысел вместе со спецификацией через панель **Source Control** в VS Code:
+3. Проверьте и сохраните замысел вместе со спецификацией. У каждого действия в VS Code (панель **Source Control**) после тире стоит та же команда для терминала:
 
-   - откройте `intents/clear-calculation-result.md` и `specification.md` в списке **Changes** и прочитайте оба diff;
-   - нажмите **Stage Changes** у этих двух файлов и проверьте staged diff ещё раз;
-   - введите сообщение `docs: clarify result after invalid input` и нажмите **Commit**.
+   - откройте `intents/clear-calculation-result.md` и `specification.md` в списке **Changes** и прочитайте diff — `git diff -- specification.md` (новый файл intent появится в diff после следующего пункта);
+   - нажмите **Stage Changes** у этих двух файлов — `git add specification.md intents/clear-calculation-result.md`, затем проверьте staged diff ещё раз — `git diff --cached`;
+   - введите сообщение `docs: clarify result after invalid input` и нажмите **Commit** — `git commit -m "docs: clarify result after invalid input"`.
 
-   После коммита список **Changes** снова пуст. Чтение diff не доказывает работу приложения или человеческое одобрение. Полный SHA коммита можно посмотреть командой `git rev-parse HEAD`, но для R1 это необязательная продвинутая фиксация, а не условие приёмки.
+   После коммита список **Changes** снова пуст (`git status --short` ничего не выводит). Чтение diff не доказывает работу приложения или человеческое одобрение. Полный SHA коммита можно посмотреть командой `git rev-parse HEAD`, но для R1 это необязательная продвинутая фиксация, а не условие приёмки.
 
-4. Опубликуйте личную ветку в свой fork: в **Source Control** нажмите **Publish Branch** — VS Code отправит `course/your_login/stage-1-error-result` в `origin` и начнёт отслеживать её. Ветка должна появиться в вашем fork.
+4. Опубликуйте личную ветку в свой fork. В VS Code: в **Source Control** нажмите **Publish Branch** — VS Code отправит `course/your_login/stage-1-error-result` в `origin` и начнёт отслеживать её. В терминале: `git push -u origin course/your_login/stage-1-error-result`. Ветка должна появиться в вашем fork.
 
    Личная учебная задача — обязательный шаг: это issue в вашем fork (если вкладки **Issues** нет, включите её в **Settings → General → Features**). Если курс проходят в компании, заведите задачу в трекере команды; порядок описан в [канонической инструкции шага 1](https://apolenkov.github.io/customdev-learning/guides/s1-git.html) и в [корпоративных ресурсах курса](https://apolenkov.github.io/customdev-learning/corporate-resources.html#jira) и здесь не повторяется. Добавьте в задачу ссылку на ветку и краткое решение; полный SHA можно приложить как точную фиксацию, но он необязателен. Не придумывайте номер задачи, родителя или факт согласования.
 
@@ -72,9 +88,9 @@ https://github.com/your_login/sdd-guide-credit-calculator-stage-1.git
 Короткий контракт перехода:
 
 1. Убедитесь, что в VS Code открыт тот же репозиторий с принятым шагом 1: текущая ветка — `course/your_login/stage-1-error-result`, а панель **Source Control** не показывает незакоммиченных правок.
-2. От этой ветки создайте `course/your_login/stage-2-reset` — имя ветки в строке состояния → **Create new branch**.
+2. От этой ветки создайте `course/your_login/stage-2-reset` — имя ветки в строке состояния → **Create new branch**; в терминале: `git switch -c course/your_login/stage-2-reset`.
 3. В `specification.md` сохраните пять сценариев шага 1 и добавьте правило сброса плюс три сценария: после успешного расчёта, после ошибки и повторный сброс. Повторный сброс не меняет состояние, не запускает расчёт и не показывает ошибок.
-4. Прочитайте diff в **Source Control**, сделайте коммит, опубликуйте ветку и откройте PR (в GitLab — MR) в своём fork: источник — `course/your_login/stage-2-reset`, база — `course/your_login/stage-1-error-result`. Шаблон PR подскажет разделы описания и чек-лист одобрения.
+4. Прочитайте diff в **Source Control** (`git diff -- specification.md`), выберите файл (**Stage Changes** — `git add specification.md`), сделайте коммит (**Commit** — `git commit -m "docs: describe form reset"`), опубликуйте ветку (**Publish Branch** — `git push -u origin course/your_login/stage-2-reset`) и откройте PR (в GitLab — MR) в своём fork: источник — `course/your_login/stage-2-reset`, база — `course/your_login/stage-1-error-result`. На GitHub шаблон PR подставит разделы описания и чек-лист одобрения сам. В GitLab шаблона для MR в проекте нет: скопируйте текст из [`.github/pull_request_template.md`](https://github.com/apolenkov/sdd-guide-credit-calculator-stage-1/blob/main/.github/pull_request_template.md) в описание MR.
 5. Для текущего diff одобрение даёт владелец продукта (Approve); аналитик и техлид оставляют замечания. Если изменение затрагивает данные, интеграции, безопасность или производительность, либо есть спор, архитектора приглашают через @: он пишет замечания, но не одобряет. После новых коммитов владелец продукта одобряет последнюю версию заново. Автор не одобряет свой запрос.
 
 ИИ и автоматическая проверка одобрение не заменяют. При разрешённом техническом walkthrough без отзывов отмечайте приёмку как незавершённую.
@@ -89,7 +105,8 @@ https://github.com/your_login/sdd-guide-credit-calculator-stage-1.git
 - [Шаг 2. Проверяем и согласуем](https://apolenkov.github.io/customdev-learning/guides/s2-review.html)
 - [SDD и OpenSpec (подготовка)](https://apolenkov.github.io/customdev-learning/guides/p3-sdd.html)
 - [Шаг 3. Изменение в OpenSpec](https://apolenkov.github.io/customdev-learning/guides/s3-openspec.html)
-- [Шаг 4. Команда продукта](https://apolenkov.github.io/customdev-learning/guides/s4-product.html)
+- [Шаг 4. Команда продукта](https://apolenkov.github.io/customdev-learning/guides/s4-team.html)
+- [Шаг 5. Контекст продукта](https://apolenkov.github.io/customdev-learning/guides/s4-product.html)
 
 Каталог курса: <https://apolenkov.github.io/customdev-learning/guides/>.
 
