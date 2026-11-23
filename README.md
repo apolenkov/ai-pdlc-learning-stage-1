@@ -4,12 +4,12 @@
 
 | | |
 | --- | --- |
-| Шаг курса | [Шаг 1. Требования в Git](https://apolenkov.github.io/customdev-learning/guides/s1-git.html) |
+| Шаг курса | [Шаг 1. Требования в Git](https://apolenkov.github.io/ai-pdlc-learning/guides/s1-git.html) |
 | Вход | Обращение заказчика и ответы (`request-and-answers.md`), `specification.md` с четырьмя сценариями. |
 | Действие | Свой intent в `intents/clear-calculation-result.md`, пятый сценарий в `specification.md`, личная ветка `course/your_login/stage-1-error-result`. |
 | Результат | Опубликованная личная ветка с intent и уточнённой спецификацией; ссылка на неё в учебной задаче. |
 
-**С чего начать.** На GitHub нажмите **Fork**. Если вы работаете в GitLab, создайте проект через **New project → Import project → Repository by URL** и вставьте адрес `https://github.com/apolenkov/sdd-guide-credit-calculator-stage-1.git`. При Fork на GitHub снимите флажок **Copy the main branch only**: тогда в ваш fork попадут и ветки разобранного примера.
+**С чего начать.** На GitHub нажмите **Fork**. Если вы работаете в GitLab, создайте проект через **New project → Import project → Repository by URL** и вставьте адрес `https://github.com/apolenkov/ai-pdlc-learning-stage-1.git`. При Fork на GitHub снимите флажок **Copy the main branch only**: тогда в ваш fork попадут и ветки разобранного примера.
 
 ## Разобранный пример
 
@@ -22,7 +22,7 @@
 | `course/example/stage-3-reset-years` | change `add-reset-and-years-term` в `openspec/changes/` | `specification.md` и `intents/` |
 | `course/example/stage-3-ai-payment-summary` | дополнительный change `add-payment-summary` (итоги выплат и переплата) рядом с предыдущим | `specification.md` и `intents/` |
 
-Intent в этих ветках не хранится. Свой `intents/clear-calculation-result.md` сверяйте с [примером intent в main](https://github.com/apolenkov/sdd-guide-credit-calculator-stage-1/blob/main/examples/clear-calculation-result.md): ветки примера проверяют `specification.md` и OpenSpec, но не intent.
+Intent в этих ветках не хранится. Свой `intents/clear-calculation-result.md` сверяйте с [примером intent в main](https://github.com/apolenkov/ai-pdlc-learning-stage-1/blob/main/examples/clear-calculation-result.md): ветки примера проверяют `specification.md` и OpenSpec, но не intent.
 
 ## Сначала сформулируйте запрос
 
@@ -34,17 +34,17 @@ Intent в этих ветках не хранится. Свой `intents/clear-c
 
 ## Где работать и какие права нужны
 
-Откройте [общий учебный эталон](https://github.com/apolenkov/sdd-guide-credit-calculator-stage-1), нажмите **Fork** и выберите своё личное пространство. Скопируйте HTTPS-адрес вашего fork — здесь и во всех примерах ниже `your_login` заменяйте своим логином на GitHub (или GitLab):
+Откройте [общий учебный эталон](https://github.com/apolenkov/ai-pdlc-learning-stage-1), нажмите **Fork** и выберите своё личное пространство. Скопируйте HTTPS-адрес вашего fork — здесь и во всех примерах ниже `your_login` заменяйте своим логином на GitHub (или GitLab):
 
 ```text
-https://github.com/your_login/sdd-guide-credit-calculator-stage-1.git
+https://github.com/your_login/ai-pdlc-learning-stage-1.git
 ```
 
-В VS Code выполните **Git: Clone** через палитру команд или кнопку **Clone Repository**, вставьте адрес fork, выберите родительскую папку и откройте клонированный корень `sdd-guide-credit-calculator-stage-1`. В терминале из родительской папки то же делают две команды (в GitLab подставьте адрес своего проекта):
+В VS Code выполните **Git: Clone** через палитру команд или кнопку **Clone Repository**, вставьте адрес fork, выберите родительскую папку и откройте клонированный корень `ai-pdlc-learning-stage-1`. В терминале из родительской папки то же делают две команды (в GitLab подставьте адрес своего проекта):
 
 ```sh
-git clone https://github.com/your_login/sdd-guide-credit-calculator-stage-1.git
-cd sdd-guide-credit-calculator-stage-1
+git clone https://github.com/your_login/ai-pdlc-learning-stage-1.git
+cd ai-pdlc-learning-stage-1
 ```
 
 Эта папка останется рабочей на шагах 1–3.
@@ -77,13 +77,13 @@ cd sdd-guide-credit-calculator-stage-1
 
 4. Опубликуйте личную ветку в свой fork. В VS Code: в **Source Control** нажмите **Publish Branch** — VS Code отправит `course/your_login/stage-1-error-result` в `origin` и начнёт отслеживать её. В терминале: `git push -u origin course/your_login/stage-1-error-result`. Ветка должна появиться в вашем fork.
 
-   Личная учебная задача — обязательный шаг: это issue в вашем fork (если вкладки **Issues** нет, включите её в **Settings → General → Features**). Если курс проходят в компании, заведите задачу в трекере команды; порядок описан в [канонической инструкции шага 1](https://apolenkov.github.io/customdev-learning/guides/s1-git.html) и в [корпоративных ресурсах курса](https://apolenkov.github.io/customdev-learning/corporate-resources.html#jira) и здесь не повторяется. Добавьте в задачу ссылку на ветку и краткое решение; полный SHA можно приложить как точную фиксацию, но он необязателен. Не придумывайте номер задачи, родителя или факт согласования.
+   Личная учебная задача — обязательный шаг: это issue в вашем fork (если вкладки **Issues** нет, включите её в **Settings → General → Features**). Если курс проходят в компании, заведите задачу в трекере команды; порядок описан в [канонической инструкции шага 1](https://apolenkov.github.io/ai-pdlc-learning/guides/s1-git.html) и в [корпоративных ресурсах курса](https://apolenkov.github.io/ai-pdlc-learning/corporate-resources.html#jira) и здесь не повторяется. Добавьте в задачу ссылку на ветку и краткое решение; полный SHA можно приложить как точную фиксацию, но он необязателен. Не придумывайте номер задачи, родителя или факт согласования.
 
 Необязательная помощь на шаге 1 описана в [готовом сообщении для корпоративного агента](ai/request.md): маршрут курса — Kilo в VS Code, именованная альтернатива — OpenCode. Она не меняет требования к итоговому diff и личному решению.
 
 ## Переход к шагу 2 на следующей ветке
 
-Откройте [полную инструкцию шага 2](https://apolenkov.github.io/customdev-learning/guides/s2-review.html). Её основной режим продолжает текущий checkout: не выполняйте команды отдельного старта из репозитория `sdd-guide-credit-calculator-stage-2`.
+Откройте [полную инструкцию шага 2](https://apolenkov.github.io/ai-pdlc-learning/guides/s2-review.html). Её основной режим продолжает текущий checkout: не выполняйте команды отдельного старта из репозитория `ai-pdlc-learning-stage-2`.
 
 Короткий контракт перехода:
 
@@ -101,14 +101,14 @@ cd sdd-guide-credit-calculator-stage-1
 
 ## Основные страницы курса
 
-- [Шаг 1. Требования в Git](https://apolenkov.github.io/customdev-learning/guides/s1-git.html)
-- [Шаг 2. Проверяем и согласуем](https://apolenkov.github.io/customdev-learning/guides/s2-review.html)
-- [SDD и OpenSpec (подготовка)](https://apolenkov.github.io/customdev-learning/guides/p3-sdd.html)
-- [Шаг 3. Изменение в OpenSpec](https://apolenkov.github.io/customdev-learning/guides/s3-openspec.html)
-- [Шаг 4. Команда продукта](https://apolenkov.github.io/customdev-learning/guides/s4-team.html)
-- [Шаг 5. Контекст продукта](https://apolenkov.github.io/customdev-learning/guides/s4-product.html)
+- [Шаг 1. Требования в Git](https://apolenkov.github.io/ai-pdlc-learning/guides/s1-git.html)
+- [Шаг 2. Проверяем и согласуем](https://apolenkov.github.io/ai-pdlc-learning/guides/s2-review.html)
+- [SDD и OpenSpec (подготовка)](https://apolenkov.github.io/ai-pdlc-learning/guides/p3-sdd.html)
+- [Шаг 3. Изменение в OpenSpec](https://apolenkov.github.io/ai-pdlc-learning/guides/s3-openspec.html)
+- [Шаг 4. Команда продукта](https://apolenkov.github.io/ai-pdlc-learning/guides/s4-team.html)
+- [Шаг 5. Контекст продукта](https://apolenkov.github.io/ai-pdlc-learning/guides/s4-product.html)
 
-Каталог курса: <https://apolenkov.github.io/customdev-learning/guides/>.
+Каталог курса: <https://apolenkov.github.io/ai-pdlc-learning/guides/>.
 
 ## Отдельная передача шага 1 в реализацию
 

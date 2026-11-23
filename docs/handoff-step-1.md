@@ -11,7 +11,7 @@ git cat-file -e "$source_sha^{commit}"
 git show "${source_sha}:specification.md"
 ```
 
-Дерево должно быть чистым, а `show` — выводить принятую спецификацию. В корне отдельного checkout сервиса откройте [общий практикум разработчика](https://github.com/apolenkov/sdd-guide-credit-calculator-stage-3/blob/main/docs/developer-handoff.md) и выполните только начальную read-only проверку:
+Дерево должно быть чистым, а `show` — выводить принятую спецификацию. В корне отдельного checkout сервиса откройте [общий практикум разработчика](https://github.com/apolenkov/ai-pdlc-learning-stage-3/blob/main/docs/developer-handoff.md) и выполните только начальную read-only проверку:
 
 ```bash
 git status --short --branch
